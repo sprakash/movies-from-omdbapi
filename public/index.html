@@ -1,7 +1,23 @@
-<form method="POST" action="/movie/find">
- 		<label>Type in the movie name</label><br>
- 		<input type="text" name="first_name"><br><br>
- 		<br>
- 		<br>
- 		<input type="submit" value="Submit">
-</form>
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<form method="POST" action="/">
+		<!-- Search the Movie Name -->
+	 		<label>Type in the movie name</label><br>
+	 		<input type="text" name="moviename"><br><br>
+	 		<br>
+	 		<br>
+	 		<input type="submit" value="Search">
+
+	 	<!-- Results with Movie Info -->
+	 		<div id="results"></div>
+
+	 	<!-- List Favorited Movie Names -->
+	 		<a href="#">Favorited Movies</a>
+
+	</form>
+</body>
+</html>
