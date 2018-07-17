@@ -21,8 +21,6 @@ app.post('/', function(req,res){
         let movieList = JSON.parse(body);
         console.log(movieList['Response']);
 
-            // console.log(movieList['Search'][1].Title + 'title only');
-
           if(movieList['Response'] === 'True') {
 
            for (var i=0; i<movieList['Search'].length; i++){
@@ -31,8 +29,6 @@ app.post('/', function(req,res){
 
                   movieObjectArray.push(movieList['Search'][i]);
                       
-                  //list all the titles, upon clicking these details will show. 
-
             }          
             console.log('movie list ' + movieObjectArray[1]);
 
