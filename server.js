@@ -5,6 +5,7 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var request = require('request');
 var moviename = '';
+var movieObjectArray = [];
 
 app.use(express.static(path.join(__dirname, '/public')))
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -13,27 +14,32 @@ app.use(bodyParser.json());
 app.use('/', express.static(path.join(__dirname, 'public')))
 
 app.post('/', function(req,res){
-  moviename = req.body.moviename;
-  console.log(moviename);
+  moviename = req.body.moviename.trim();
 
   if(moviename !== '') {
     request.get("http://www.omdbapi.com/?s="+moviename+"&apikey=160ca515", (error, response, body) => {
-        if(error) {
-            return console.dir(error);
-        }
         let movieList = JSON.parse(body);
+        console.log(movieList['Response']);
 
+            // console.log(movieList['Search'][1].Title + 'title only');
 
-        for (var i=0; i<movieList['Search'].length; i++){
-          console.log(movieList['Search'][i].Title);
-          console.log('---------------------');
+          if(movieList['Response'] === 'True') {
 
-          let movieObj = movieList['Search'][i];
-          //list all the titles, upon clicking these details will show. 
+           for (var i=0; i<movieList['Search'].length; i++){
+                  console.log(movieList['Search'][i].Title);
+                  console.log('---------------------');
 
-        }
+                  movieObjectArray.push(movieList['Search'][i]);
+                      
+                  //list all the titles, upon clicking these details will show. 
 
+            }          
+            console.log('movie list ' + movieObjectArray[1]);
 
+          } else {
+             console.log('OMDB Search Results are 0');
+          }
+         
     });
   }
 });
