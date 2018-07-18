@@ -1,7 +1,14 @@
   ![GA Logo](https://raw.github.com/generalassembly/ga-ruby-on-rails-for-devs/master/images/ga.png)
   
+
   #### Developer Comments 
   - Only includes Pure Javascript Solution. 
+  - App uses nodemon. 
+
+  #### Usage 
+  - Simply type 'nodemon' in the app root dir on the cli. 
+  - make sure you have the nodemon npm package. 
+  - app listens on port 3000 : http://localhost:3000
   
   #### Answer to advantages of MVC approach.
   - Usage of data-binding and variables such as scope in Angular would cut short the need to write update functions for data. As values would change on the front end, they would persist in the backend seamlessly. This would avoid repeated calls to API.
