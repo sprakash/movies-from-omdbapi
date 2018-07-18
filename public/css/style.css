@@ -1,9 +1,18 @@
+body {
+	margin: 1em auto;
+	max-width: 768px;
+	font-family: helvetica;
+	font-size: 12px;
+}
+
 form {
 	display: flex;
 	width: 100%;
 	justify-content: space-between;
-	margin: 0 auto;
-	max-width: 768px;
+	flex-wrap: wrap;
+	flex-direction: row;
+	border-bottom: 2px solid olive;
+	padding: 2em 0;
 }
 
 form input {
@@ -14,6 +23,55 @@ form div {
 	padding-left: 2em;
 }
 
+img {
+	width: 50%;
+	display: block;
+}
+
+input[type=checkbox] {
+	margin-right: .5em;
+}
+
+input[type=submit] {
+	background-color: lightyellow;
+	border: 2px solid;
+	font-size: 14px;
+}
+
+a {
+	text-transform: uppercase;
+	font-weight: bolder;
+}
+
+label {
+	font-size: 16px;
+}
+
+span {
+	color: #f11212;
+	font-weight: 600;
+}
+
+.movie-item {
+	margin: 2em 0 4em;
+}
+
 .movieinfo {
 	margin:2em 0;
+}
+
+.movie-item-details {
+	display: none;
+	width: 25%;
+	background-color: lightgoldenrodyellow;
+}
+
+.movie-item-details {
+	border: 1px solid;
+	padding: 1em 2em;
+	margin: .5em 0;
+}
+
+.movie-item-details div {
+	margin-bottom: 1em;
 }

@@ -33,9 +33,7 @@ app.get('/getMovieList', function(req,res){
                   res.end(json);
 
                 } else {
-                  res.write("Result: No Film with that name in OMDB Search");
-                  console.log("Result: No Film with that name in OMDB Search");
-                  res.send();
+                  res.status(500).send({ error: "No Film with that name in OMDB Search" });
 
                 }
 
@@ -43,8 +41,7 @@ app.get('/getMovieList', function(req,res){
     });
   } else {
 
-    res.write("Result: Movie name not readable");
-    res.end();
+    res.status(500).send({ error: "Movie Name not readable" });
     console.log("Movie Name not readable");
   }
 
