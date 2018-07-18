@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
                         //create radio button to mark movie as favorite
                         var movieFav = document.createElement('input');
                         movieFav.type = 'radio';
-                        movieFav.name = 'movieFave';
+                        movieFav.name = 'movieFave-'+i;
                         movieFav.checked = false;
 
                         movieFav.addEventListener('change', markAsFav, false);
