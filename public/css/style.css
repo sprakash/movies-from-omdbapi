@@ -60,6 +60,10 @@ span {
     margin: 2em auto;
 }
 
+.favMovieList {
+	list-style: none;
+}
+
 .movie-item {
 	margin: 2em 0 4em;
 }

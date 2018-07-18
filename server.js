@@ -52,9 +52,8 @@ app.post('/setFavorites', function(req, res){
   }
   
   var data = JSON.parse(fs.readFileSync('./data.json'));
-  var favfilmCount = req.body.fav.split('.')[0];
 
-  data.push("{"+favfilmCount+". : " + req.body.fav.split('.')[1] + "}");
+  data.push("{"+req.body.fav+ "}");
   
   fs.writeFile('./data.json', JSON.stringify(data));
   res.setHeader('Content-Type', 'application/json');

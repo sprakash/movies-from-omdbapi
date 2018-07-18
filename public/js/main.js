@@ -90,6 +90,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	document.getElementById("fav-link").addEventListener("click", listFavorites, false);
 
 	function markAsFav() {
+
 		favfilmCount++;
 		var favfilm = this.parentElement.parentElement.children[0].innerHTML;
 		var favfilmTitle= favfilm.split(".")[1];
@@ -99,11 +100,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		var setFavUrl = '/setFavorites';
 
 		console.log(favfilmTitle + "json");
-		var favJSONData = JSON.stringify({"fav": favfilmCount+".  "+favfilmTitle+" "+favfilmYear});
+		var favJSONData = JSON.stringify({"fav" : favfilmTitle+" "+favfilmYear});
 
 		setFavReq.open('POST', '/setFavorites', true);
 		setFavReq.setRequestHeader('Content-Type', 'application/json');
 		setFavReq.send(favJSONData);
+		ocument.getElementById('favMovies').innerHTML = "";
 	}
 
 	function listFavorites() {
@@ -117,16 +119,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
 				var favMovies = JSON.parse(listFavsReq.response);
 				if(favMovies.length > 0){
 
+					var favMovieContainer = document.getElementById('favMovies');
+					favMovieContainer.innerHTML = "";
+
 		    		var favMovieList = document.createElement('ul');
-		    		favMovieList.innerHTML = "";
+		    		favMovieList.className = "favMovieList";
+
 		    		for (var i=0; i< favMovies.length; i++){
 						var favMovie = document.createElement('li');
-			   			favMovie.innerHTML = JSON.stringify(favMovies[i]);
+			   			favMovie.innerHTML = (i+1)+". "+favMovies[i].substring(1, favMovies[i].length-1);
 			   			favMovieList.appendChild(favMovie);
 
 		    		}
-
-		    		document.getElementById('favMovies').appendChild(favMovieList);
+		    		favMovieContainer.appendChild(favMovieList);
+		    	} else {
+		    		document.getElementById('favMovies').innerHTML = "You have not yet marked any movies as favorites. Search and mark as favorite.";
 		    	}
 			}
 		};
