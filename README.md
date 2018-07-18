@@ -6,6 +6,10 @@
   - App uses nodemon. 
 
   #### Usage 
+  1. Heroku Link : https://lit-meadow-34796.herokuapp.com/ 
+  Warning: there may already be a favorite film in there.
+
+  2. Locally 
   - Simply type 'nodemon' in the app root dir on the cli. 
   - make sure you have the nodemon npm package. 
   - app listens on port 3000 : http://localhost:3000
