@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Search films via OMDB</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="js/main.js" type="text/javascript"></script>
 </head>
 <body>
-	<form method="POST" action="/">
-		<!-- Search the Movie Name -->
-	 		<label>Type in the movie name</label><br>
-	 		<input type="text" name="moviename"><br><br>
-	 		<br>
-	 		<br>
-	 		<input type="submit" value="Search">
-
-	 	<!-- Results with Movie Info -->
-	 		<div id="results"></div>
-
-	 	<!-- List Favorited Movie Names -->
-	 		<a href="#">Favorited Movies</a>
-
+	 <form id="movieform" name="movieform" method="post">
+			<!-- Search the Movie Name -->
+		 		<label>Type in the movie name</label><br>
+		 		<input type="text" id="moviename" name="moviename"><br><br>
+		 		<input type="submit" value="Search">
 	</form>
+	
+	<!-- Results with Movie Info -->
+	 <div name="results" id="results"></div>
+
+	 <!-- List Favorited Movie Names -->
+	 <a href="/favorites">Favorited Movies</a>
 </body>
 </html>
