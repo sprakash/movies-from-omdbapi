@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(event) { 
+	var favfilmCount=0;
 
 	document.getElementById('movieform').addEventListener('submit', function(evt){
     	evt.preventDefault();
@@ -6,9 +7,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 		var xhr = new XMLHttpRequest();
 		var params = "moviename="+document.getElementById('moviename').value;
-
-		//console.log(params);
-
 		xhr.open('GET', '/getMovieList?'+params, true);
 		xhr.setRequestHeader('Content-Type', 'application/json');
 
@@ -54,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
                         movieFav.name = 'movieFave';
                         movieFav.checked = false;
 
-                        movieFav.addEventListener('change', , false);
+                        movieFav.addEventListener('change', markAsFav, false);
 
                         var movieFavSpan = document.createElement('span');
                         movieFavSpan.innerHTML = 'Mark as a Favorite Movie';
@@ -77,8 +75,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
                         results.appendChild(movieItemDiv);
                             
                  	 }   
-
-                    //res.write('<a style="display:block;padding-top:2em;" class="allfavs" href="/favorites">View All Favorites</a>');
 		    	}
 		    } else if (xhr.status === 500) {
 		    		results.innerHTML = "Sorry No Results For That Movie Name";
@@ -91,8 +87,51 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		xhr.send();
 	});
 
+	document.getElementById("fav-link").addEventListener("click", listFavorites, false);
 
-	//display favorites 
+	function markAsFav() {
+		favfilmCount++;
+		var favfilm = this.parentElement.parentElement.children[0].innerHTML;
+		var favfilmTitle= favfilm.split(".")[1];
 
+		var favfilmYear = this.parentElement.parentElement.children[1].children[0].innerHTML;//in case of duplicates, you have year to distinguish
+		var setFavReq = new XMLHttpRequest();
+		var setFavUrl = '/setFavorites';
+
+		console.log(favfilmTitle + "json");
+		var favJSONData = JSON.stringify({"fav": favfilmCount+".  "+favfilmTitle+" "+favfilmYear});
+
+		setFavReq.open('POST', '/setFavorites', true);
+		setFavReq.setRequestHeader('Content-Type', 'application/json');
+		setFavReq.send(favJSONData);
+	}
+
+	function listFavorites() {
+		var listFavsReq = new XMLHttpRequest();
+		listFavsReq.open('GET', '/favorites', true);
+		listFavsReq.setRequestHeader('Content-Type', 'application/json');
+
+		listFavsReq.onload = function() {
+			if (listFavsReq.status === 200) { 
+
+				var favMovies = JSON.parse(listFavsReq.response);
+				if(favMovies.length > 0){
+
+		    		var favMovieList = document.createElement('ul');
+		    		favMovieList.innerHTML = "";
+		    		for (var i=0; i< favMovies.length; i++){
+						var favMovie = document.createElement('li');
+			   			favMovie.innerHTML = JSON.stringify(favMovies[i]);
+			   			favMovieList.appendChild(favMovie);
+
+		    		}
+
+		    		document.getElementById('favMovies').appendChild(favMovieList);
+		    	}
+			}
+		};
+		listFavsReq.send();
+
+	}
 
 });

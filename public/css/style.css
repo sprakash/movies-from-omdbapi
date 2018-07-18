@@ -36,6 +36,8 @@ input[type=submit] {
 	background-color: lightyellow;
 	border: 2px solid;
 	font-size: 14px;
+	border-color: lightgrey;
+    padding: .5em 4em;
 }
 
 a {
@@ -53,7 +55,6 @@ span {
 }
 
 .fav-link {
-	border: 1px solid red;
     display: block;
     text-align: center;
     margin: 2em auto;
@@ -81,4 +82,8 @@ span {
 
 .movie-item-details div {
 	margin-bottom: 1em;
+}
+
+#results {
+	padding: 2em 0;
 }
