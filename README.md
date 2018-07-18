@@ -1,4 +1,13 @@
-![GA Logo](https://raw.github.com/generalassembly/ga-ruby-on-rails-for-devs/master/images/ga.png)
+  ![GA Logo](https://raw.github.com/generalassembly/ga-ruby-on-rails-for-devs/master/images/ga.png)
+  
+  #### Developer Comments 
+  - Only includes Pure Javascript Solution. 
+  
+  #### Answer to advantages of MVC approach.
+  - Usage of data-binding and variables such as scope in Angular would cut short the need to write update functions for data. As values would change on the front end, they would persist in the backend seamlessly. This would avoid repeated calls to API.
+  - Additionally usage of templating language and tools such as ejs would simplify JS code. Less code and more functionality.
+  - More division of views and controller as well as advantages of routing. 
+
 
 ## WDI Instructor Code Challenge
 
