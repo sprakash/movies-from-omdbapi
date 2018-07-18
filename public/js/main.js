@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function(event) { 
-	console.log('laoding this');
 
 	document.getElementById('movieform').addEventListener('submit', function(evt){
     	evt.preventDefault();
@@ -55,6 +54,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
                         movieFav.name = 'movieFave';
                         movieFav.checked = false;
 
+                        movieFav.addEventListener('change', , false);
+
                         var movieFavSpan = document.createElement('span');
                         movieFavSpan.innerHTML = 'Mark as a Favorite Movie';
 
@@ -89,5 +90,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		};
 		xhr.send();
 	});
-	
+
+
+	//display favorites 
+
+
 });

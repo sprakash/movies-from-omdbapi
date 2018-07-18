@@ -52,6 +52,13 @@ span {
 	font-weight: 600;
 }
 
+.fav-link {
+	border: 1px solid red;
+    display: block;
+    text-align: center;
+    margin: 2em auto;
+}
+
 .movie-item {
 	margin: 2em 0 4em;
 }
